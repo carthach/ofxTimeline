@@ -140,8 +140,9 @@ bool ofxTLImageSequenceFrame::loadFrame()
     //do this before converting the image type
     if(!thumbLoaded){
         thumbnail->clear();
-        thumbnail->setUseTexture(false);
-        thumbnail->clone(*frame);
+        thumbnail->setUseTexture(false);		
+        //thumbnail->clone(*frame);
+		*thumbnail = *frame; // clone has become protected
         thumbWidth = desiredThumbWidth;
         float scaleFactor = 1.0*frame->getWidth() / thumbWidth;
         thumbHeight = frame->getHeight() / scaleFactor;
