@@ -37,7 +37,9 @@ cd ofxRange
 git checkout 8e232a33a0db5007c425c3d1ebc7f57ffb2232ac
 cd ..
 
-${PREFIX}pixelsandcandy/ofxAudioDecoder.git
-cd ofxAudioDecoder
-git checkout bbe91e832389c2a8c78eaa04a0318dcc0872b63b
-cd ..
+# ${PREFIX}pixelsandcandy/ofxAudioDecoder.git
+# cd ofxAudioDecoder
+# git checkout bbe91e832389c2a8c78eaa04a0318dcc0872b63b
+# cd ..
+
+${PREFIX}elliotwoods/ofxAudioDecoder
