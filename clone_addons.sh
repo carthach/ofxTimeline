@@ -42,4 +42,4 @@ cd ..
 # git checkout bbe91e832389c2a8c78eaa04a0318dcc0872b63b
 # cd ..
 
-${PREFIX}elliotwoods/ofxAudioDecoder
+${PREFIX}carthach/ofxAudioDecoder
