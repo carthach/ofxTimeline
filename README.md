@@ -26,8 +26,11 @@
             robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/sndfile/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
             if errorlevel 1 exit 0 else exit %errorlevel%
 
- - Add 'TIMELINE_AUDIO_INCLUDED=1' & 'TIMELINE_VIDEO_INCLUDED=1' to the Preprocessor settings
- - Don't forget to set this for ALL configurations and ALL platforms, got stung with that one a few times...
+ - Add to the Preprocessor settings:
+            TIMELINE_AUDIO_INCLUDED=1
+            TIMELINE_VIDEO_INCLUDED=1
+            
+ - Don't forget to set these for ALL configurations and ALL platforms, got stung with that one a few times...
 
 
 ### history
