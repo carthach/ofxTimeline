@@ -6,7 +6,7 @@
 
 ### Updated openFrameworks v0.10.0 + Windows 10 Instructions
 
- - Open the ProjectGenerator in of_0073_osx_release/projectGenerator/
+ - Open the projectGenerator
  - Give the project a name
  - Under the addons tab select the following addons
       - ofxTimeline
