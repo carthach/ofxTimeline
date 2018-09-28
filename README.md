@@ -1,12 +1,40 @@
-# v0.9.8 #
+# v0.10.0 Windows Support #
     $git clone https://github.com/pixelsandcandy/ofxTimeline
     $cd ofxTimeline/
-    $git checkout bdd2c67c670112e27a03100a3111bb2477fb6002
+    $git checkout win_support
     $./clone_addons.sh
+
+### Updated openFrameworks v0.10.0 + Windows 10 Instructions
+
+ - Open the ProjectGenerator in of_0073_osx_release/projectGenerator/
+ - Give the project a name
+ - Under the addons tab select the following addons
+      - ofxTimeline
+      - ofxTimecode
+      - ofxMSATimer
+      - ofxTextInputField
+      - ofxRange
+      - ofxTween
+      - ofxAudioDecoder
+      - ofxXmlSettings
+      - ofxPoco
+ - Generate project
+ - If you are in Windows VC2017, go to Project Properties -> Configuration Properties -> Build Events -> Post-Build events -> Command Line and paste in the following build event (replace the standard OF command)
+        
+            for /d %%f in ($(OF_ROOT)\libs\*) do (if exist %%f\lib\vs\$(Platform_Actual)\*.dll ( robocopy "%%f\lib\vs\$(Platform_Actual)" "$(ProjectDir)bin" "*.dll" /njs /njh /np /fp /bytes ))
+            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/openal/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/sndfile/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+            if errorlevel 1 exit 0 else exit %errorlevel%
+
+ - Add 'TIMELINE_AUDIO_INCLUDED=1' & 'TIMELINE_VIDEO_INCLUDED=1' to the Preprocessor settings
+ - Don't forget to set this for ALL configurations and ALL platforms, got stung with that one a few times...
 
 
 ### history
-    original: https://github.com/YCAMInterlab/ofxTimeline
+    original: 
+      https://github.com/pixelsandcandy/ofxTimeline
+      https://github.com/YCAMInterlab/ofxTimeline
+
     fixed-ish: https://github.com/transat/ofxTimeline
 
 
