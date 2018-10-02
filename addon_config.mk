@@ -65,7 +65,7 @@ linuxarmv7l:
 	
 osx:
 vs:
-	ADDON_LIBS += libs\openal\lib\vs\$(PlatformTarget)\libOpenAL32.dll.a
+	ADDON_LIBS += libs\openal\lib\vs\$(PlatformTarget)\OpenAL32.lib
 	ADDON_LIBS += libs\sndfile\lib\vs\$(PlatformTarget)\libsndfile-1.lib
 	ADDON_LIBS += Mfreadwrite.lib MFPlat.lib mfuuid.lib
 vs2010:
