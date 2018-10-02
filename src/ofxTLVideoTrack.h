@@ -38,6 +38,8 @@
 #include "ofxTLVideoThumb.h"
 #include "ofxTLImageTrack.h"
 
+template<typename T> using ofPtr = shared_ptr<T>;
+
 class ofxTLVideoTrack : public ofxTLImageTrack, public ofThread {
   public:
 	ofxTLVideoTrack();
