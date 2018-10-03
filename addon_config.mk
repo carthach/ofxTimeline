@@ -14,6 +14,7 @@ common:
 	ADDON_DEPENDENCIES += ofxMSATimer
 	ADDON_DEPENDENCIES += ofxTimecode
 	ADDON_DEPENDENCIES += ofxTextInputField
+	ADDON_DEPENDENCIES += ofxPoco
 	
 	# include search paths, this will be usually parsed from the file system
 	# but if the addon or addon libraries need special search paths they can be
@@ -43,8 +44,7 @@ common:
 	
 	# binary libraries, these will be usually parsed from the file system but some 
 	# libraries need to passed to the linker in a specific order 
-	# ADDON_LIBS =
-	
+
 	# some addons need resources to be copied to the bin/data folder of the project
 	# specify here any files that need to be copied, you can use wildcards like * and ?
 	ADDON_DATA = copy_to_data_GUI/*
@@ -64,7 +64,10 @@ linuxarmv7l:
 	ADDON_LIBS_EXCLUDE = libs/kiss
 	
 osx:
-win_cb:
+vs:
+	ADDON_LIBS += libs\openal\lib\vs\$(PlatformTarget)\OpenAL32.lib
+	ADDON_LIBS += libs\sndfile\lib\vs\$(PlatformTarget)\libsndfile-1.lib
+	ADDON_LIBS += Mfreadwrite.lib MFPlat.lib mfuuid.lib
 vs2010:
 iphone:
 android:

@@ -379,7 +379,9 @@ void ofOpenALSoundPlayer_TimelineAdditions::readFile(string fileName, vector<sho
 }
 
 //------------------------------------------------------------
-bool ofOpenALSoundPlayer_TimelineAdditions::load(string fileName, bool is_stream){
+bool ofOpenALSoundPlayer_TimelineAdditions::load(const std::filesystem::path& filePath, bool is_stream){
+
+	string fileName = filePath.string();
     
     string ext = ofToLower(ofFilePath::getFileExt(fileName));
     if(ext != "wav" && ext != "aif" && ext != "aiff" && ext != "mp3"){

@@ -1,13 +1,45 @@
-# v0.9.8 #
-    $cd PATH_TO/of_v0.9.x/addons
-    $git clone https://github.com/pixelsandcandy/ofxTimeline
+# v0.10.0 Windows and Mac Support #
+    $git clone https://github.com/carthach/ofxTimeline
     $cd ofxTimeline/
-    $git checkout babb8fccd8dca792f11b643619685dec005373f2
     $./clone_addons.sh
+
+### Updated openFrameworks v0.10.0 + Windows 10 Instructions
+
+ - Open the projectGenerator
+ - Give the project a name
+ - Under the addons tab select the following addons
+      - ofxTimeline
+      - ofxTimecode
+      - ofxMSATimer
+      - ofxTextInputField
+      - ofxRange
+      - ofxTween
+      - ofxAudioDecoder
+      - ofxXmlSettings
+      - ofxPoco
+ - Generate project
+ - If you are in Windows VC2017, go to Project Properties -> Configuration Properties -> Build Events -> Post-Build events -> Command Line and paste in the following build event (replace the standard OF command)
+        
+            for /d %%f in ($(OF_ROOT)\libs\*) do (if exist %%f\lib\vs\$(Platform_Actual)\*.dll ( robocopy "%%f\lib\vs\$(Platform_Actual)" "$(ProjectDir)bin" "*.dll" /njs /njh /np /fp /bytes ))
+            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/openal/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/sndfile/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+            if errorlevel 1 exit 0 else exit %errorlevel%
+
+ - Add to the Preprocessor settings:
+ 
+            TIMELINE_AUDIO_INCLUDED=1
+            TIMELINE_VIDEO_INCLUDED=1
+            
+ - Don't forget to set these for ALL configurations and ALL platforms, got stung with that one a few times...
+
+ - **Mac** Remove any reference to i386 and Quicktime to get it to work in Xcode 10 + Mojave
 
 
 ### history
-    original: https://github.com/YCAMInterlab/ofxTimeline
+    original: 
+      https://github.com/pixelsandcandy/ofxTimeline
+      https://github.com/YCAMInterlab/ofxTimeline
+
     fixed-ish: https://github.com/transat/ofxTimeline
 
 
