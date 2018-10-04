@@ -20,15 +20,15 @@
  - Generate project
  - If you are in Windows VC2017, go to Project Properties -> Configuration Properties -> Build Events -> Post-Build events -> Command Line and paste in the following build event (replace the standard OF command)
         
-            for /d %%f in ($(OF_ROOT)\libs\*) do (if exist %%f\lib\vs\$(Platform_Actual)\*.dll ( robocopy "%%f\lib\vs\$(Platform_Actual)" "$(ProjectDir)bin" "*.dll" /njs /njh /np /fp /bytes ))
-            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/openal/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
-            robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/sndfile/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
-            if errorlevel 1 exit 0 else exit %errorlevel%
+        for /d %%f in ($(OF_ROOT)\libs\*) do (if exist %%f\lib\vs\$(Platform_Actual)\*.dll ( robocopy "%%f\lib\vs\$(Platform_Actual)" "$(ProjectDir)bin" "*.dll" /njs /njh /np /fp /bytes ))
+        robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/openal/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+        robocopy "$(OF_ROOT)/addons/ofxTimeline/libs/sndfile/export/vs/$(Platform_Actual)/" "$(ProjectDir)bin/" "*.dll" /njs /njh /np /fp /bytes
+        if errorlevel 1 exit 0 else exit %errorlevel%
 
  - Add to the Preprocessor settings:
  
-            TIMELINE_AUDIO_INCLUDED=1
-            TIMELINE_VIDEO_INCLUDED=1
+        TIMELINE_AUDIO_INCLUDED=1
+        TIMELINE_VIDEO_INCLUDED=1
             
  - Don't forget to set these for ALL configurations and ALL platforms, got stung with that one a few times...
 
